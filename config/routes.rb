@@ -13,5 +13,7 @@ Rails.application.routes.draw do
   end
   get "admin" => "admin#index"
 
+  get "adicionar-depoimento" => "depoiment#index"
+
   root "home#index"
 end
