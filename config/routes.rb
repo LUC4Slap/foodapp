@@ -13,7 +13,9 @@ Rails.application.routes.draw do
   end
   get "admin" => "admin#index"
 
-  get "adicionar-depoimento" => "depoiment#index"
+  get "adicionar-depoimento" => "depoiment#new"
+  post "adicionar-depoimento" => "depoiment#create"
+  # resources :depoiment
 
   root "home#index"
 end
