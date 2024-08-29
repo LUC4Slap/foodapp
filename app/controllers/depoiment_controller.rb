@@ -7,8 +7,8 @@ class DepoimentController < ApplicationController
   end
 
   def create
-    # debugger
-    @depoiment = Depoiment.new(depoiments_params)
+    debugger
+    @depoiment = Depoiment.new(name: params[:name], depoiment: params[:depoiment])
     respond_to do |format|
       if @depoiment.save
         format.html { redirect_to root_path, notice: "Comentario Adicionado" }
@@ -22,6 +22,6 @@ class DepoimentController < ApplicationController
 
   private
   def depoiments_params
-    params.require(:depoiments).permit(:name, :depoiment)  
+    params.require(:depoiment).permit(:name, :depoiment)
   end
 end

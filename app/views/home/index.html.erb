@@ -23,19 +23,14 @@
     </h2>
     <%= link_to "Deixe um Depoimento", adicionar_depoimento_path %>
     <div class="flex flex-wrap">
-      <div class="w-full md:w-1/3 px-2 mb-4">
-        <div class="bg-gray-100 rounded shadow py-4 px-4">
-          <p class="text-gray-800 text-base mb-4">Lanches muito gostosos e saborosos, recomento.</p>
-          <p class="text-gray-500 text-xs">- Fulano X</p>
+      <% @depoimentos.each do |depoimento| %>
+        <div class="w-full md:w-1/3 px-2 mb-4">
+          <div class="bg-gray-100 rounded shadow py-4 px-4">
+            <p class="text-gray-800 text-base mb-4"><%= depoimento.depoiment %></p>
+            <p class="text-gray-500 text-xs">- <%= depoimento.name %></p>
+          </div>
         </div>
-      </div>
-
-      <div class="w-full md:w-1/3 px-2 mb-4">
-        <div class="bg-gray-100 rounded shadow py-4 px-4">
-          <p class="text-gray-800 text-base mb-4">Entraga muioto rapido e atendimento muito bom.</p>
-          <p class="text-gray-500 text-xs">- Siclano X</p>
-        </div>
-      </div>
+      <% end %>
     </div>
   </div>
 </div>
