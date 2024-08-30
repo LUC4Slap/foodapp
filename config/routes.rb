@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   get "adicionar-depoimento" => "depoiment#new"
   post "adicionar-depoimento" => "depoiment#create"
+  resources :categories, only: [:show]
   # resources :depoiment
 
   root "home#index"
