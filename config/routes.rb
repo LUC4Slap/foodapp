@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     root to: "admin#index", as: :admin_root
   end
   get "admin" => "admin#index"
+  get "cart" => "carts#show"
 
   get "adicionar-depoimento" => "depoiment#new"
   post "adicionar-depoimento" => "depoiment#create"
