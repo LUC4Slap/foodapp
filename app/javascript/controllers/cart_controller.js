@@ -46,4 +46,38 @@ export default class extends Controller {
     window.location.reload()
   }
 
+  checkout() {
+    // tempo 04:02
+    const cart = JSON.parse(localStorage.getItem('cart'));
+    const payload = {
+      authenticity_token: "",
+      cart
+    }
+    const csrfToken = document.querySelector("[name='csrf-token']").content;
+    console.log(csrfToken);
+    fetch('/checkout', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-Token': csrfToken,
+      },
+      body: JSON.stringify(payload),
+    })
+      .then((response) => {
+        if (response.ok) {
+          response.json().then(body => window.location.href = body.url)
+        } else {
+          const errorEl = document.createElement('div');
+          errorEl.innerText = `Erro ao processar seu pedido ${body.error}`;
+          let errorContainer = document.getElementById('errorContainer');
+          errorContainer.appendChild(errorEl);
+        }
+      })
+      .catch((error) => {
+        console.log(`No catch erro: ${error}`);
+      });
+
+
+  }
+
 }
